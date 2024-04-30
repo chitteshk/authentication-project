@@ -20,7 +20,7 @@ export const LoginRoute = {
     const user = await db.collection("users").findOne({ email });
 
     if (!user) {
-      return res.status(401);
+      res.status(401);
     }
 
     const { _id: id, isVerified, passWordHash, info } = user;
@@ -38,8 +38,9 @@ export const LoginRoute = {
             }
           });
           
-    } else {
-      res.send(401);
+    }
+    else {
+      res.status(400).json({message: "Password is invalid"})
     }
   },
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import { useToken } from "../auth/useToken";
@@ -10,6 +10,13 @@ export const LoginPage = () => {
   const [inputPassWord, setInputPassWord] = useState("");
 
   const history = useHistory();
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setErrorMessage(false);
+    },3000)
+    return () => clearTimeout(timeOut);
+  },[errorMessage])
 
   const onLoginClicked = async () => {
     try {
