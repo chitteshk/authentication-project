@@ -5,7 +5,7 @@ import axios from "axios";
 import { ResetSuccessPage } from "./ResetSuccessPage";
 
 
-export const ReserPasswordLandingPage = () => {
+export const ResetPasswordLandingPage = () => {
     const history = useHistory();
     const [,setToken] = useToken();
     const { resetPasswordString } = useParams();

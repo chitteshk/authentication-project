@@ -6,7 +6,8 @@ import { PrivateRoute } from './auth/PrivateRoute';
 import { PleaseVerifyEmail } from './pages/PleaseVerifyEmail';
 import { EmailVerificationLandingPage } from './pages/EmailVerificationLandingPage';
 import { ForgotPassword } from './pages/ForgotPassword';
-import { ReserPasswordLandingPage } from './pages/ResetPassWordLandingPage';
+import { ResetPasswordLandingPage } from './pages/ResetPasswordLandingPage';
+
 
 export const Routes = () => {
     return (
@@ -31,7 +32,7 @@ export const Routes = () => {
                     <EmailVerificationLandingPage/>
                 </Route>
                 <Route path="/reset-password/:resetPasswordString">
-                    <ReserPasswordLandingPage/>
+                    <ResetPasswordLandingPage/>
                 </Route>
 
             </Switch>
