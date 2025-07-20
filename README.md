@@ -108,57 +108,6 @@ npm start
 ```
 The frontend application will start on `http://localhost:3000`
 
-
-```
-authentication-project/
-├── back-end/
-│   ├── src/
-│   │   ├── controllers/
-│   │   │   └── sendMail.js          # Email sending controller
-│   │   ├── routes/
-│   │   │   ├── ForgotPassRoute.js   # Password reset route
-│   │   │   ├── GetGoogleOAuthRoute.js
-│   │   │   ├── googleOauthCallbackRoute.js
-│   │   │   ├── LoginRoute.js        # User login route
-│   │   │   ├── ResetPasswordRoute.js
-│   │   │   ├── SignUpRoute.js       # User registration route
-│   │   │   ├── UpdateUserRoute.js   # User profile update
-│   │   │   ├── VerifyEmail.js       # Email verification route
-│   │   │   └── index.js             # Route aggregator
-│   │   ├── utils/
-│   │   │   ├── getGoogleOAuth.js    # Google OAuth utilities
-│   │   │   ├── getGoogleUser.js
-│   │   │   ├── oAuthClient.js
-│   │   │   └── updateOrCreateUserFromOauth.js
-│   │   ├── db.js                    # Database connection
-│   │   └── server.js                # Express server setup
-│   └── package.json
-├── front-end/
-│   ├── src/
-│   │   ├── auth/
-│   │   │   ├── PrivateRoute.js      # Protected route component
-│   │   │   ├── useToken.js          # Token management hook
-│   │   │   └── useUser.js           # User state management hook
-│   │   ├── pages/
-│   │   │   ├── EmailVerificationLandingPage.js
-│   │   │   ├── ErrVerification.js
-│   │   │   ├── ForgotPassword.js
-│   │   │   ├── LoginPage.js
-│   │   │   ├── PleaseVerifyEmail.js
-│   │   │   ├── ResetPasswordLandingPage.js
-│   │   │   ├── ResetSuccessPage.js
-│   │   │   ├── SignupPage.js
-│   │   │   ├── SuccVerification.js
-│   │   │   └── UserInfoPage.js
-│   │   ├── util/
-│   │   │   └── useQueryParams.js    # URL query parameter utility
-│   │   ├── App.js                   # Main App component
-│   │   ├── Routes.js                # Application routes
-│   │   └── index.js                 # React entry point
-│   └── package.json
-└── README.md
-```
-
 ## 🔧 Configuration
 
 ### Email Setup (Required for email verification and password reset)
