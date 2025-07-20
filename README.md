@@ -88,9 +88,50 @@ cd ../front-end
 npm install
 ```
 
+
 ### 4. Database Setup
 
-Ensure MongoDB is running locally on port 27017. The application will automatically connect to `mongodb://localhost:27017`.
+#### Start MongoDB (macOS/Homebrew)
+```sh
+brew services start mongodb-community
+```
+This will start MongoDB as a background service on port 27017.
+
+#### Check MongoDB and Inspect the Database
+Start the MongoDB shell:
+```sh
+mongosh
+```
+Switch to your database:
+```js
+use react-auth-db
+```
+View all users:
+```js
+db.users.find().pretty()
+```
+Delete a user by email:
+```js
+db.users.deleteOne({ email: "user@example.com" })
+```
+Delete all users:
+```js
+db.users.deleteMany({})
+```
+Exit the shell:
+```sh
+exit
+```
+
+#### Stop MongoDB (macOS/Homebrew)
+```sh
+brew services stop mongodb-community
+```
+This will stop the MongoDB service.
+
+> On Linux/Windows, refer to the [MongoDB Manual](https://docs.mongodb.com/manual/installation/) for installation, startup, and shutdown instructions.
+
+The application will automatically connect to `mongodb://localhost:27017` when MongoDB is running.
 
 ## 🚀 Running the Application
 
