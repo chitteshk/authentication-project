@@ -1,7 +1,7 @@
 import { getDbConnection } from "../db";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 import { sendEmailVerificationMail } from "../controllers/sendMail";
 
 export const SignUpRoute = {
@@ -13,11 +13,12 @@ export const SignUpRoute = {
 
       // Attempt to establish a connection to MongoDB
       const db = getDbConnection("react-auth-db");
-      
 
       if (!db) {
         // Handle database connection error
-        return res.status(500).json({ error: "Unable to connect to the database" });
+        return res
+          .status(500)
+          .json({ error: "Unable to connect to the database" });
       }
 
       // Continue with user signup logic
@@ -46,8 +47,22 @@ export const SignUpRoute = {
 
       const { insertedId } = result;
 
-      // Send verification email
-      await sendEmailVerificationMail(email, verificationString);
+      // Send verification email (do not block signup if email fails)
+      try {
+        console.log(
+          "Attempting to send verification email to:",
+          email,
+          "with string:",
+          verificationString
+        );
+        const result = await sendEmailVerificationMail(
+          email,
+          verificationString
+        );
+        console.log("Email verification result:", result);
+      } catch (emailError) {
+        console.error("Email verification failed:", emailError);
+      }
 
       jwt.sign(
         {
@@ -70,7 +85,9 @@ export const SignUpRoute = {
       );
     } catch (error) {
       console.error("Error occurred during signup:", error);
-      res.status(500).json({ error: "An error occurred during signup" });
+      res
+        .status(500)
+        .json({ error: error.message || "An error occurred during signup" });
     }
   },
 };
